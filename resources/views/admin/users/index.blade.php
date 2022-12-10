@@ -12,7 +12,7 @@
             <div class="col-12 col-md-8">
                 <div class="d-flex align-items-sm-center flex-column flex-sm-row justify-content-sm-end">
                     <div class="ml-sm-4">
-                        <a href="" class="btn btn-lg btn-primary">Создать пользователя</a>
+                        <a href="{{ route('admin.user.create') }}" class="btn btn-lg btn-primary">Создать пользователя</a>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                                     <th>ФИО</th>
                                     <th>Почта</th>
                                     <th>Дата регистрации</th>
-                                    <th>Действия</th>
+                                    <th style="text-align: right">Действия</th>
                                 </tr>
                                 </thead>
                                 <tbody id="sortable">
@@ -40,13 +40,17 @@
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->created_at }}</td>
                                     <td>
-                                        <a href="{{ route('admin.user.edit', $item->id) }}" title="Редактировать" class="mr-1 text-muted">
+                                        <div class="d-flex justify-content-end gap-1">
+                                        <a href="{{ route('admin.user.edit', $item->id) }}" title="Редактировать" class="btn btn-primary btn-sm">
                                             Редактировать
                                         </a>
-                                        &nbsp;
-                                        <a href="{{ route('admin.user.destroy', $item->id) }}" title="Удалить" class="mr-1 text-muted button-destroy">
-                                            Удалить
-                                        </a>
+                                        <form method="post" action="{{ route('admin.user.destroy', $item->id) }}"> 
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-primary btn-sm" type="submit">Удалить</button>
+                                        </form>
+                                    </div>
+
                                     </td>
                                 </tr>
                                 @endforeach

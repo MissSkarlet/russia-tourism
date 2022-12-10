@@ -7,12 +7,12 @@
     <div class="content-wrapper">
         <div class="row mb-4">
             <div class="col-12 col-md-4">
-                <h3 style="margin-top: 5px;">Все админы</h3>
+                <h3 style="margin-top: 5px;">Все администраторы</h3>
             </div>
             <div class="col-12 col-md-8">
                 <div class="d-flex align-items-sm-center flex-column flex-sm-row justify-content-sm-end">
                     <div class="ml-sm-4">
-                        <a href="" class="btn btn-lg btn-primary">Создать админа</a>
+                        <a href="{{ route('admin.admin.create') }}" class="btn btn-lg btn-primary">Создать администратора</a>
                     </div>
                 </div>
             </div>
@@ -29,25 +29,27 @@
                                     <th>ФИО</th>
                                     <th>Почта</th>
                                     <th>Дата регистрации</th>
-                                    <th>Действия</th>
+                                    <th style="text-align: right">Действия</th>
                                 </tr>
                                 </thead>
                                 <tbody id="sortable">
                                 @foreach ($data as $item)
                                 <tr>
                                     <td>{{ $loop->index + $data->firstItem()}}</td>
-                                    <td><a class="text-dark font-weight-bold" href="{{ route('admin.user.edit', $item->id) }}">{{ $item->surname }} {{ $item->name }} {{ $item->middle_name }}</a></td>
+                                    <td><a class="text-dark font-weight-bold" href="{{ route('admin.admin.edit', $item->id) }}">{{ $item->surname }} {{ $item->name }} {{ $item->middle_name }}</a></td>
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->created_at }}</td>
                                     <td>
-                                        <a href="{{ route('admin.user.edit', $item->id) }}" title="Редактировать" class="mr-1 text-muted">
+                                        <div class="d-flex justify-content-end gap-1">
+                                        <a href="{{ route('admin.admin.edit', $item->id) }}" title="Редактировать" class="btn btn-primary btn-sm">
                                             Редактировать
                                         </a>
-                                        &nbsp;
-                                        <a href="{{ route('admin.user.destroy', $item->id) }}" title="Удалить" class="mr-1 text-muted button-destroy">
-                                            Удалить
-                                        </a>
-                                    </td>
+                                        <form method="post" action="{{ route('admin.admin.destroy', $item->id) }}"> 
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-primary btn-sm" type="submit">Удалить</button>
+                                        </form>
+                                    </div>
                                 </tr>
                                 @endforeach
                                 </tbody>
