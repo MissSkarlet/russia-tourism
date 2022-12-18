@@ -15,6 +15,13 @@ class CreateToursTable extends Migration
     {
         Schema::create('tours', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('image');
+            $table->text('description');
+            // $table->integer('positive_reviews');
+            // $table->integer('routes');
+            $table->foreignId('start_city_id');
+            $table->foreignId('finish_city_id');
             $table->timestamps();
         });
     }

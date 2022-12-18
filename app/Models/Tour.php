@@ -2,12 +2,23 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\City;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Tour extends Model
 {
     use HasFactory;
 
-    private $table = 'tours';
+    protected $table = 'tours';
+
+    public function start_city()
+    {
+        return $this->belongsTo(City::class, 'start_city_id');
+    }
+
+    public function finish_city()
+    {
+        return $this->belongsTo(City::class, 'finish_city_id');
+    }
 }

@@ -1,9 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\BidsController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\ToursController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\AdminsController;
+use App\Http\Controllers\Admin\CitiesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,8 +24,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/', [HomeController::class, 'index'])->name('home');
         Route::resource('user', UsersController::class);
         Route::resource('admin', AdminsController::class);
+        Route::resource('city', CitiesController::class);
+        Route::resource('tour', ToursController::class);
+        Route::prefix('bid')->name('bid.')->group(function () {
+            Route::get('/', [BidsController::class, 'index'])->name('index');
+            Route::get('/{bid}/show', [BidsController::class, 'show'])->name('show');
+            Route::get('/{bid}/process', [BidsController::class, 'process'])->name('process');
         });
     // });
+});
     Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

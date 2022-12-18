@@ -6,17 +6,17 @@
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link @if (Route::currentRouteName() == 'admin.bids') active @else link-dark @endif">
+            <a href="{{ route('admin.bid.index') }}" class="nav-link @if (Route::currentRouteName() == 'admin.bid.index') active @else link-dark @endif">
                 Заказы
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link @if (Route::currentRouteName() == 'admin.tours') active @else link-dark @endif">
+            <a href="{{ route('admin.tour.index') }}" class="nav-link @if (Route::currentRouteName() == 'admin.tour.index') active @else link-dark @endif">
                 Туры
             </a>
         </li>
         <li>
-            <a href="#" class="nav-link @if (Route::currentRouteName() == 'admin.cities') active @else link-dark @endif">
+            <a href="{{ route('admin.city.index') }}" class="nav-link @if (Route::currentRouteName() == 'admin.city.index') active @else link-dark @endif">
                 Города
             </a>
         </li>
