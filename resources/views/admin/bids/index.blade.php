@@ -7,7 +7,7 @@
     <div class="content-wrapper">
         <div class="row mb-4">
             <div class="col-12 col-md-4">
-                <h3 style="margin-top: 5px;">Я тебя люблю</h3>
+                <h3 style="margin-top: 5px;">Все заявки</h3>
             </div>
         </div>
         <div class="row">
