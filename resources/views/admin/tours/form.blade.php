@@ -35,8 +35,20 @@
                             </div>
                             <div>
                                 <div class="mb-3">
+                                    <label for="date" class="form-label">Дата</label>
+                                    <input type="date" class="form-control" id="date" name="date" value="{{ isset($tour) ? $tour->date : '' }}">
+                                </div>
+                            </div>
+                            <div>
+                                <div class="mb-3">
                                     <label for="description" class="form-label">Описание</label>
                                     <textarea class="form-control" id="description" name="description" rows="4">{{ isset($tour) ? $tour->description : '' }}</textarea>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="mb-3 form-check">
+                                    <label for="is_popular" class="form-check-label">Популярный тур</label>
+                                    <input type="checkbox" class="form-check-input" id="is_popular" name="is_popular" @if (isset($tour) && $tour->is_popular) checked @endif>
                                 </div>
                             </div>
                             <div>

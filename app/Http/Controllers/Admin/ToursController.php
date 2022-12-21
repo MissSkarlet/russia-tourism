@@ -25,6 +25,8 @@ class ToursController extends Controller
         
         $tour->title = $data->title;
         $tour->description = $data->description;
+        $tour->date = $data->date;
+        $tour->is_popular = $data->has('is_popular') ?? false;
         $tour->start_city_id = $data->start_city_id;
         $tour->finish_city_id = $data->finish_city_id;
 
@@ -50,6 +52,8 @@ class ToursController extends Controller
 
         $tour->title = $data->title;
         $tour->description = $data->description;
+        $tour->date = $data->date;
+        $tour->is_popular = $data->has('is_popular') ?? false;
         $tour->start_city_id = $data->start_city_id;
         $tour->finish_city_id = $data->finish_city_id;
 

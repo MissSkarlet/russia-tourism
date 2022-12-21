@@ -20,7 +20,7 @@
                                 <tr>
                                     <th>№</th>
                                     <th>Тур</th>
-                                    <th>Почта</th>
+                                    <th>Телефон</th>
                                     <th>ФИО</th>
                                     <th>Статус</th>
                                     <th>Дата заявки</th>
@@ -31,19 +31,27 @@
                                 @foreach ($data as $item)
                                     <tr>
                                         <td>{{ $loop->index + $data->firstItem()}}</td>
-                                        <td><a class="text-dark font-weight-bold" href="{{ route('admin.tour.show', $item->id) }}">{{ $item->tour->title }}</a></td>
-                                        <td>{{ optional($item->user)->email ?? $item->email }}</td>
-                                        <td>{{ optional($item->user)->name ?? $item->name }} {{ optional($item->user)->surname ?? $item->surname }}</td>
+                                        <td>{{ $item->tour->title }}</td>
+                                        <td>{{ $item->phone }}</td>
+                                        <td>{{ $item->surname }} {{ $item->name }}</td>
                                         <td>{{ $item->is_processed ? 'Выполнена' : 'В ожидании' }}</td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>
                                             <div class="d-flex justify-content-end gap-1">
-                                                <a href="{{ route('admin.tour.show', $item->id) }}" class="btn btn-primary btn-sm">
+                                                {{-- <a href="{{ route('admin.tour.show', $item->id) }}" class="btn btn-primary btn-sm">
                                                     Просмотр
-                                                </a>
+                                                </a> --}}
+                                                @if ($item->is_processed)
                                                 <a href="{{ route('admin.tour.process', $item->id) }}" class="btn btn-primary btn-sm">
                                                     Выполнить заявку
                                                 </a>
+                                                @else
+                                                <a href="{{ route('admin.tour.process', $item->id) }}" class="btn btn-success btn-sm">
+                                                    Заявка выполнена
+                                                </a>
+                                                @endif
+                                                
+                                                
                                             </div>
                                         </td>
                                     </tr>

@@ -15,9 +15,11 @@ class CreateBidsTable extends Migration
     {
         Schema::create('bids', function (Blueprint $table) {
             $table->id();
-            $table->string('text');
+            // $table->string('text');
             $table->string('phone');
-            $table->foreignId('user_id')->nullable();
+            $table->string('name');
+            $table->string('surname');
+            // $table->foreignId('user_id')->nullable();
             $table->foreignId('tour_id')->nullable();
             $table->boolean('is_processed')->default(0);
             $table->timestamps();

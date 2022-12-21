@@ -18,8 +18,10 @@ class CreateToursTable extends Migration
             $table->string('title');
             $table->string('image');
             $table->text('description');
+            $table->date('date');
             // $table->integer('positive_reviews');
             // $table->integer('routes');
+            $table->boolean('is_popular')->default(0);
             $table->foreignId('start_city_id');
             $table->foreignId('finish_city_id');
             $table->timestamps();
