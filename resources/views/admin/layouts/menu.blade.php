@@ -7,7 +7,7 @@
         </li>
         <li>
             <a href="{{ route('admin.bid.index') }}" class="nav-link @if (Route::currentRouteName() == 'admin.bid.index') active @else link-dark @endif">
-                Заказы
+                Заявки
             </a>
         </li>
         <li>
