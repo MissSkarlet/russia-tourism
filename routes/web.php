@@ -19,7 +19,7 @@ use App\Http\Controllers\Admin\CitiesController;
 |
 */
 
-Route::prefix('admin')->name('admin.')->group(function () {
+Route::name('admin.')->group(function () {
     // Route::middleware(['auth:admin'])->group(function () {
         Route::get('/', [HomeController::class, 'index'])->name('home');
         Route::resource('user', UsersController::class);
