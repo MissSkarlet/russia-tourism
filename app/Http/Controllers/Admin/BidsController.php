@@ -16,9 +16,9 @@ class BidsController extends Controller
         return view('admin.bids.show', ['bid' => $bid]);
     }
 
-    public function processed(Bid $bid) {
+    public function process(Bid $bid) {
         $bid->is_processed = !$bid->is_processed;
         $bid->save();
-        return redirect()->to(route('admin.bids.index'));
+        return redirect()->to(route('admin.bid.index'));
     }
 }

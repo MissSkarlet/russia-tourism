@@ -16,10 +16,13 @@ class ApiController extends Controller
 
     public function bid(Request $request)
     {
+        $data = json_decode($request->getContent());
+
         $bid = new Bid();
-        $bid->name = $request->name;
-        $bid->surname = $request->surname;
-        $bid->tour_id = $request->tour_id;
+        $bid->name = $data->name;
+        $bid->surname = $data->surname;
+        $bid->phone = $data->tel;
+        $bid->tour_id = $data->tour_id;
         $bid->save();
 
         return response()->json(['status' => 'OK']);

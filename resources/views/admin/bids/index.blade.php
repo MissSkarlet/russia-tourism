@@ -41,12 +41,12 @@
                                                 {{-- <a href="{{ route('admin.tour.show', $item->id) }}" class="btn btn-primary btn-sm">
                                                     Просмотр
                                                 </a> --}}
-                                                @if ($item->is_processed)
-                                                <a href="{{ route('admin.tour.process', $item->id) }}" class="btn btn-primary btn-sm">
+                                                @if (!$item->is_processed)
+                                                <a href="{{ route('admin.bid.process', $item->id) }}" class="btn btn-primary btn-sm">
                                                     Выполнить заявку
                                                 </a>
                                                 @else
-                                                <a href="{{ route('admin.tour.process', $item->id) }}" class="btn btn-success btn-sm">
+                                                <a href="{{ route('admin.bid.process', $item->id) }}" class="btn btn-success btn-sm">
                                                     Заявка выполнена
                                                 </a>
                                                 @endif
