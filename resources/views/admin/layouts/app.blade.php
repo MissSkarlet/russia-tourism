@@ -24,9 +24,9 @@
         @include('admin.layouts.header')
 
         <main style="display: flex; height: calc(100vh - 55px)">
-            {{-- @auth --}}
+            @auth
                 @include('admin.layouts.menu')
-            {{-- @endauth --}}
+            @endauth
             <div style="width: 100%; margin: 30px; 30px;">
                 @yield('content')
             </div>

@@ -25,10 +25,5 @@
                 Пользователи
             </a>
         </li>
-        <li>
-            <a href="{{ route('admin.admin.index') }}" class="nav-link @if (Route::currentRouteName() == 'admin.admin.index') active @else link-dark @endif">
-                Админы
-            </a>
-        </li>
     </ul>
 </div>

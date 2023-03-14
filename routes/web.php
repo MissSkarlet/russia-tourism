@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BidsController;
 use App\Http\Controllers\Admin\HomeController;
@@ -20,10 +21,9 @@ use App\Http\Controllers\Admin\CitiesController;
 */
 
 Route::name('admin.')->group(function () {
-    // Route::middleware(['auth:admin'])->group(function () {
+    Route::middleware(['auth:web'])->group(function () {
         Route::get('/', [HomeController::class, 'index'])->name('home');
         Route::resource('user', UsersController::class);
-        Route::resource('admin', AdminsController::class);
         Route::resource('city', CitiesController::class);
         Route::resource('tour', ToursController::class);
         Route::prefix('bid')->name('bid.')->group(function () {
@@ -31,7 +31,7 @@ Route::name('admin.')->group(function () {
             Route::get('/{bid}/show', [BidsController::class, 'show'])->name('show');
             Route::get('/{bid}/process', [BidsController::class, 'process'])->name('process');
         });
-    // });
+    });
 });
     Auth::routes();
 
