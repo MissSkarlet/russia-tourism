@@ -21,12 +21,16 @@ use App\Http\Controllers\Admin\CitiesController;
 */
 
 Route::name('admin.')->group(function () {
+
     Route::middleware(['auth:web'])->group(function () {
+
         Route::get('/', [HomeController::class, 'index'])->name('home');
-        Route::resource('user', UsersController::class);
         Route::resource('city', CitiesController::class);
         Route::resource('tour', ToursController::class);
+        Route::resource('user', UsersController::class);
+        
         Route::prefix('bid')->name('bid.')->group(function () {
+
             Route::get('/', [BidsController::class, 'index'])->name('index');
             Route::get('/{bid}/show', [BidsController::class, 'show'])->name('show');
             Route::get('/{bid}/process', [BidsController::class, 'process'])->name('process');
@@ -34,6 +38,5 @@ Route::name('admin.')->group(function () {
         });
     });
 });
-    Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();

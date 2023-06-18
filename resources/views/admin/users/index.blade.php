@@ -28,6 +28,7 @@
                                     <th>№</th>
                                     <th>ФИО</th>
                                     <th>Почта</th>
+                                    <th>Роль</th>
                                     <th>Дата регистрации</th>
                                     <th style="text-align: right">Действия</th>
                                 </tr>
@@ -38,6 +39,7 @@
                                     <td>{{ $loop->index + $data->firstItem()}}</td>
                                     <td><a class="text-dark font-weight-bold" href="{{ route('admin.user.edit', $item->id) }}">{{ $item->surname }} {{ $item->name }} {{ $item->middle_name }}</a></td>
                                     <td>{{ $item->email }}</td>
+                                    <td>{{ $item->role }}</td>
                                     <td>{{ $item->created_at }}</td>
                                     <td>
                                         <div class="d-flex justify-content-end gap-1">

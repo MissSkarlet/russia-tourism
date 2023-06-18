@@ -11,11 +11,15 @@ class UsersController extends Controller
 {
 
     public function index() {
+        if (auth()->user()->role != 'admin') abort(404);
+
         $data = User::paginate();
         return view('admin.users.index', ['data' => $data]);
     }
 
     public function edit(User $user) {
+        if (auth()->user()->role != 'admin') abort(404);
+
         return view('admin.users.form', ['user' => $user]);
     }
 
@@ -25,6 +29,7 @@ class UsersController extends Controller
         $user->name = $data->name;
         $user->surname = $data->surname;
         $user->middle_name = $data->middle_name;
+        $user->role = $data->role;
         $user->email = $data->email;
         if (filled($data->password)) {
             $user->password = Hash::make($data->password);
@@ -35,6 +40,8 @@ class UsersController extends Controller
     }
 
     public function create() {
+        if (auth()->user()->role != 'admin') abort(404);
+
         return view('admin.users.form');
     }
 
@@ -45,6 +52,7 @@ class UsersController extends Controller
         $user->name = $data->name;
         $user->surname = $data->surname;
         $user->middle_name = $data->middle_name;
+        $user->role = $data->role;
         $user->email = $data->email;
         $user->password = Hash::make($data->password);
         $user->save();

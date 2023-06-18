@@ -32,18 +32,30 @@
                                     <label for="surname" class="form-label">Фамилия</label>
                                     <input type="text" class="form-control" id="surname" name="surname" value="{{ isset($user) ? $user->surname : '' }}">
                                 </div>
+
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Имя</label>
                                     <input type="text" class="form-control" id="name" name="name"  value="{{ isset($user) ? $user->name : '' }}">
                                 </div>
+
                                 <div class="mb-3">
                                     <label for="middle_name" class="form-label">Отчество</label>
                                     <input type="text" class="form-control" id="middle_name" name="middle_name"  value="{{ isset($user) ? $user->middle_name : '' }}">
                                 </div>
+
+                                <div class="mb-3">
+                                    <label for="middle_name" class="form-label">Роль</label>
+                                    <select class="form-select" name="role">
+                                        <option value="manager" @if (isset($user) && $user->role == 'manager' || !isset($user)) selected @endif>Менеджер</option>
+                                        <option value="admin" @if (isset($user) && $user->role == 'admin') selected @endif>Админ</option>
+                                    </select>
+                                </div>
+
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email" class="form-control" id="email" name="email"  value="{{ isset($user) ? $user->email : '' }}">
                                 </div>
+
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Пароль</label>
                                     <input type="password" class="form-control" id="password" name="password">
