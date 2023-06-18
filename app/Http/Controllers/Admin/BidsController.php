@@ -21,4 +21,9 @@ class BidsController extends Controller
         $bid->save();
         return redirect()->to(route('admin.bid.index'));
     }
+
+    public function destroy(Bid $bid) {
+        $bid->delete();
+        return redirect()->back();
+    }
 }

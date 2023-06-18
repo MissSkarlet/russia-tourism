@@ -30,6 +30,7 @@ Route::name('admin.')->group(function () {
             Route::get('/', [BidsController::class, 'index'])->name('index');
             Route::get('/{bid}/show', [BidsController::class, 'show'])->name('show');
             Route::get('/{bid}/process', [BidsController::class, 'process'])->name('process');
+            Route::get('/{bid}/destroy', [BidsController::class, 'destroy'])->name('destroy');
         });
     });
 });

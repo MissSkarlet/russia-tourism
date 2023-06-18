@@ -20,7 +20,7 @@ class UsersSeeder extends Seeder
             'surname' => 'Гольцман',
             'middle_name' => 'Викторовна',
             'email' => 'liza-golsman@mail.ru',
-            'password' => Hash::make('123123123'), // Мой пароль хыхыхыхыхы
+            'password' => Hash::make('123123123'), // Пароль админки
             'created_at' => now(),
             'email_verified_at' => now(),
         ]);
