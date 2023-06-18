@@ -20,10 +20,13 @@
                 Города
             </a>
         </li>
-        <li>
-            <a href="{{ route('admin.user.index') }}" class="nav-link @if (Route::currentRouteName() == 'admin.user.index') active @else link-dark @endif">
-                Пользователи
-            </a>
-        </li>
+        @if (auth()->user()->role == 'admin')
+            <li>
+                <a href="{{ route('admin.user.index') }}" class="nav-link @if (Route::currentRouteName() == 'admin.user.index') active @else link-dark @endif">
+                    Пользователи
+                </a>
+            </li>
+        @endif
+        
     </ul>
 </div>
